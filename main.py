@@ -1,4 +1,5 @@
 import json
+import datatypes as dt
 
 
 def _auto_indict(key, x):
@@ -174,4 +175,5 @@ class FlightPlan:
 
 
 if __name__ == '__main__':
+    t = dt.Latitude(76.43926926794)
     FlightPlan("Base Flight Plan")
