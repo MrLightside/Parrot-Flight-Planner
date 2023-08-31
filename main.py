@@ -1,5 +1,4 @@
 import json
-import datatypes as dt
 
 
 def _auto_indict(key, x):
@@ -148,6 +147,28 @@ class FlightPlan:
         self.map_type = map_type  # Integer ::
         self.plan = plan  # List ::
 
+    @property
+    def longitude(self):
+        return float(self._longitude)
+
+    @longitude.setter
+    def longitude(self, x):
+        x = float(x)
+        if not -180 <= x <= 180:
+            raise ValueError("Longitude value must be equal to or between -180 and 180.")
+        self._longitude = x
+
+    @property
+    def latitude(self):
+        return float(self._latitude)
+
+    @latitude.setter
+    def latitude(self, x):
+        x = float(x)
+        if not -90 <= x <= 90:
+            raise ValueError("Latitude value must be equal to or between -90 and 90.")
+        self._latitude = x
+
     def indict(self):
         x = {
             "version": self.version,
@@ -175,5 +196,7 @@ class FlightPlan:
 
 
 if __name__ == '__main__':
-    t = dt.Latitude(76.43926926794)
-    FlightPlan("Base Flight Plan")
+    new_fp = FlightPlan("Base Flight Plan")
+
+    new_fp.latitude = -90
+    print(new_fp.latitude)
